@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
+}
+
 provider "aws" {
   region = "us-east-1"
 }
@@ -239,17 +248,7 @@ resource "aws_route53_zone" "main" {
   name = "getmemap.com"
 }
 
-resource "aws_route53_record" "ssp_subdomain" {
-  zone_id = aws_route53_zone.main.zone_id
-  name    = "ssp.getmemap.com"
-  type    = "A"
-  
-  alias {
-    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
-    evaluate_target_health = false
-  }
-}
+# Route53 record removed - using CloudFront default domain name instead
 
 # CloudFront distribution for HTTPS
 resource "aws_cloudfront_distribution" "s3_distribution" {
@@ -261,8 +260,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"
-  
-  aliases = ["ssp.getmemap.com"]
   
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
@@ -289,17 +286,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
   
   viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate.cert.arn
-    ssl_support_method  = "sni-only"
+    cloudfront_default_certificate = true
   }
 }
 
-# SSL Certificate
-resource "aws_acm_certificate" "cert" {
-  domain_name       = "ssp.getmemap.com"
-  validation_method = "DNS"
-  
-  lifecycle {
-    create_before_destroy = true
-  }
-}
+# SSL Certificate removed - using CloudFront default certificate instead
