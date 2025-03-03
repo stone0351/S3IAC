@@ -1,0 +1,16 @@
+{
+  "name": "iac-platform-lambda",
+  "version": "1.0.0",
+  "description": "Lambda functions for AWS IAC Platform",
+  "main": "api_handlers.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "zip -r execute_iac_lambda.zip execute_iac.js node_modules"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1066.0",
+    "uuid": "^8.3.2"
+  }
+}

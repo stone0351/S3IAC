@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS IAC Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AWS IAC Platform</h1>
+            <p>Manage and execute your Infrastructure as Code</p>
+        </header>
+
+        <div id="login-section" class="section">
+            <h2>Welcome</h2>
+            <p>Sign in with your Google account to continue</p>
+            <div id="g_id_onload"
+                data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                data-callback="handleCredentialResponse">
+            </div>
+            <div class="g_id_signin" data-type="standard"></div>
+        </div>
+
+        <div id="main-content" class="section hidden">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('aws-keys')">AWS Keys</button>
+                <button class="tab-btn" onclick="openTab('iac-code')">IAC Code</button>
+                <button class="tab-btn" onclick="openTab('execute')">Execute</button>
+            </div>
+
+            <div id="aws-keys" class="tab-content">
+                <h2>Manage AWS Keys</h2>
+                <div class="key-form">
+                    <h3>Add New AWS Key</h3>
+                    <form id="add-key-form">
+                        <div class="form-group">
+                            <label for="key-name">Key Name:</label>
+                            <input type="text" id="key-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="access-key">Access Key:</label>
+                            <input type="text" id="access-key" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="secret-key">Secret Key:</label>
+                            <input type="password" id="secret-key" required>
+                        </div>
+                        <button type="submit" class="btn">Save Key</button>
+                    </form>
+                </div>
+                <div class="key-list">
+                    <h3>Your AWS Keys</h3>
+                    <div id="keys-container"></div>
+                </div>
+            </div>
+
+            <div id="iac-code" class="tab-content hidden">
+                <h2>Manage IAC Code</h2>
+                <div class="code-form">
+                    <h3>Add New IAC Script</h3>
+                    <form id="add-code-form">
+                        <div class="form-group">
+                            <label for="code-name">Script Name:</label>
+                            <input type="text" id="code-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="code-description">Description:</label>
+                            <input type="text" id="code-description">
+                        </div>
+                        <div class="form-group">
+                            <label for="code-content">IAC Code:</label>
+                            <textarea id="code-content" rows="15" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Save Script</button>
+                    </form>
+                </div>
+                <div class="code-list">
+                    <h3>Your IAC Scripts</h3>
+                    <div id="scripts-container"></div>
+                </div>
+            </div>
+
+            <div id="execute" class="tab-content hidden">
+                <h2>Execute IAC Code</h2>
+                <div class="execution-form">
+                    <form id="execute-form">
+                        <div class="form-group">
+                            <label for="key-select">Select AWS Key:</label>
+                            <select id="key-select" required>
+                                <option value="">-- Select a key --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="script-select">Select IAC Script:</label>
+                            <select id="script-select" required>
+                                <option value="">-- Select a script --</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Execute</button>
+                    </form>
+                </div>
+                <div class="execution-results">
+                    <h3>Execution Results</h3>
+                    <pre id="execution-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 AWS IAC Platform</p>
+        </footer>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
