@@ -1,4 +1,4 @@
-// Google Authentication Functions
+// Google Authentication Functions AWS API Gateway Endpoint
 let userProfile = null;
 const API_BASE_URL = 'https://rjz9m1hwv5.execute-api.us-east-1.amazonaws.com/';
 
