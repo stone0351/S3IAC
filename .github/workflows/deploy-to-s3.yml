@@ -5,7 +5,7 @@ on:
       - master  # 当推送到 master 分支时触发
     paths:
       - 'frontend/**'  # 只有当 frontend 文件夹下的文件发生变化时触发
-      - 'node_modules/**'  # 当 node_modules 文件夹下的文件发生变化时也触发
+      # - 'node_modules/**'  # 当 node_modules 文件夹下的文件发生变化时也触发
 permissions:
   id-token: write  # 允许 GitHub OIDC 访问 AWS
   contents: read
@@ -25,4 +25,4 @@ jobs:
           # 上传 frontend 文件夹到 S3 桶
           aws s3 sync ./frontend s3://${{ secrets.AWS_S3_BUCKET }} --delete
           # 上传 node_modules 文件夹到 S3 根目录
-          aws s3 sync ./node_modules s3://${{ secrets.AWS_S3_BUCKET }}/node_modules --delete
+          # aws s3 sync ./node_modules s3://${{ secrets.AWS_S3_BUCKET }}/node_modules --delete
