@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master  # 当推送到 master 分支时触发
+    paths:
+      - 'frontend/**'  # 只有当 frontend 文件夹下的文件发生变化时触发
 permissions:
   id-token: write  # 允许 GitHub OIDC 访问 AWS
   contents: read
