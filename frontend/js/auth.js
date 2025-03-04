@@ -1,6 +1,6 @@
 // Google Authentication Functions AWS API Gateway Endpoint
 let userProfile = null;
-const API_BASE_URL = 'https://rjz9m1hwv5.execute-api.us-east-1.amazonaws.com/';
+const API_BASE_URL = 'https://rjz9m1hwv5.execute-api.us-east-1.amazonaws.com/v1';
 
 // This function is called when the Google Sign-In is complete
 function handleCredentialResponse(response) {
