@@ -1,4 +1,4 @@
-// Main application functionality
+// Main application functionality AWS API Gateway Endpoint
 const API_BASE_URL = 'https://rjz9m1hwv5.execute-api.us-east-1.amazonaws.com/';
 
 // Tab management
