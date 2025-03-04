@@ -19,4 +19,4 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Sync Specific Folder to S3
         run: |
-          aws s3 sync ./your-folder-name s3://${{ secrets.AWS_S3_BUCKET }} --delete
+          aws s3 sync ./frontend s3://${{ secrets.AWS_S3_BUCKET }} --delete
