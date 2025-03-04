@@ -1,6 +1,6 @@
 // Google Authentication Functions
 let userProfile = null;
-const API_BASE_URL = 'https://accounts.google.com/o/oauth2';
+const API_BASE_URL = 'https://rjz9m1hwv5.execute-api.us-east-1.amazonaws.com/';
 
 // This function is called when the Google Sign-In is complete
 function handleCredentialResponse(response) {

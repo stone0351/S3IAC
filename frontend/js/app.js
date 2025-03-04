@@ -1,5 +1,5 @@
 // Main application functionality
-const API_BASE_URL = 'https://accounts.google.com/o/oauth2';
+const API_BASE_URL = 'https://rjz9m1hwv5.execute-api.us-east-1.amazonaws.com/';
 
 // Tab management
 function openTab(tabName) {
