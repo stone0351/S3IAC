@@ -15,10 +15,8 @@ jobs:
       - name: Configure AWS Credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: 
-${{ secrets.AWS_ROLE_ARN }}
-          aws-region: $
-{{ secrets.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
       - name: Sync Specific Folder to S3
         run: |
           aws s3 sync ./your-folder-name s3://${{ secrets.AWS_S3_BUCKET }} --delete
